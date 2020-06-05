@@ -5,8 +5,9 @@ import {
   selectFeedPosts,
   selectLoadingIndicator,
 } from "../store/feed/selectors";
-import PostCounter from "./PostCounter";
+import PostCounter from "../components/PostCounter";
 import { fetchNext5Posts, fetchInitialPosts } from "../store/feed/actions";
+import { Link } from "react-router-dom";
 
 export default function PostsFeed() {
   const dispatch = useDispatch();
@@ -26,9 +27,13 @@ export default function PostsFeed() {
       <h2>Recent posts</h2>
       <PostCounter />
 
-      {posts.map((quote, i) => {
-        // console.log("Step 7: use in component", quote);
-        return <p key={i}>{quote.title}</p>;
+      {posts.map((post, i) => {
+        // console.log("Step 7: use in component", post);
+        return (
+          <p key={i}>
+            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+          </p>
+        );
       })}
 
       {loading ? (
