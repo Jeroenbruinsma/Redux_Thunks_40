@@ -1,13 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export default function Signup() {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSignUp(event) {
+  async function handleSignUp(event) {
     event.preventDefault();
     console.log(name, email, password);
+
+    const API_URL = "https://codaisseur-coders-network.herokuapp.com";
+    const response = await axios.post(`${API_URL}/signup`, {
+      name: name,
+      email: email,
+      password: password,
+    });
+
+    const action = {
+      type: "SIGNUP_SUCCESS",
+      payload: response.data.jwt,
+    };
+    dispatch(action);
   }
 
   return (
