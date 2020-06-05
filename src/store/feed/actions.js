@@ -10,6 +10,7 @@ export function storeDataInStore(data) {
 }
 
 export function initialData(data) {
+  console.log("Step 4: action creator", data);
   return { type: "add_initial_posts", payload: data };
 }
 
@@ -32,9 +33,11 @@ export async function fetchNext5Posts(dispatch, getState) {
 }
 
 export async function fetchInitialPosts(dispatch, getState) {
-  // console.log("HOW MANY TIMES DOES THIS HAPPEN????");
+  console.log("Step 3 action creator");
 
   const response = await axios.get(`${API_URL}/posts?offset=${0}&limit=5`);
+
+  console.log("Step 3 did we get the data?", response);
 
   const morePosts = response.data.rows;
 
