@@ -23,7 +23,21 @@ export default function Signup() {
       type: "SIGNUP_SUCCESS",
       payload: response.data.jwt,
     };
+
     dispatch(action);
+
+    const profileResponse = await axios.get(`${API_URL}/me`, {
+      headers: {
+        Authorization: `Bearer ${response.data.jwt}`,
+      },
+    });
+
+    const profileAction = {
+      type: "PROFILE_FETCHED",
+      payload: profileResponse.data,
+    };
+
+    dispatch(profileAction);
   }
 
   return (

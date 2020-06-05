@@ -30,3 +30,35 @@
 ## Login form
 
 ## Do something we have to be authenticated & authorized for
+
+1. After we get the token in the signup form, use it to make an authenticated & authorized request to get our own profile
+
+   - axios.get
+   - set an Authorization Header in our request
+
+2. Get a response
+
+3. Store the response in redux as well
+
+BONUS:
+
+## If you store your token in redux you can easily get it in any thunk
+
+```javascript
+export async function fetchNext5Posts(dispatch, getState) {
+  const count = getState().feed.posts.length;
+  const token = getState().user.jwt;
+  //dispatch(setLoadingIndicator(true))
+
+  const response = await axios.get(`${API_URL}/posts?offset=${count}&limit=5`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  //   console.log("3. get  my data...", response.data.rows);
+
+  const morePosts = response.data.rows;
+
+  dispatch(storeDataInStore(morePosts));
+}
+```
