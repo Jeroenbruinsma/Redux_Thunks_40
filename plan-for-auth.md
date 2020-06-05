@@ -1,12 +1,12 @@
 ## Sign up form
 
-1. Form component / Page
+1. Form component / Page X
 
 - Route
 - Component
 - Form
 
-2. Event listeners & handlers to get the data from the form
+2. Event listeners & handlers to get the data from the form X
 
 - useState
 - onChange
