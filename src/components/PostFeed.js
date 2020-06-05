@@ -14,17 +14,18 @@ export default function PostsFeed() {
   const loading = useSelector(selectLoadingIndicator);
 
   useEffect(() => {
-    console.log("1. useEffect of postFeed");
+    // console.log("1. useEffect of postFeed");
     dispatch(fetchInitialPosts);
   }, [dispatch]);
 
-  console.log("0 & 8. render the data from the redux store", posts);
+  // console.log("0 & 8. render the data from the redux store", posts);
   return (
     <div className="PostsFeed">
       <h2>Recent posts</h2>
       <PostCounter />
 
       {posts.map((quote, i) => {
+        // console.log(quote);
         return <p key={i}>{quote.title}</p>;
       })}
 

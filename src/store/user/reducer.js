@@ -1,13 +1,11 @@
 const initialState = {
-    username: "Jeroen",
-    profileImg: "link to img"
-}
+  username: "Jeroen",
+  profileImg: "link to img",
+};
 
 export default (state = initialState, { type, payload }) => {
-    switch (type) {
-
- 
+  switch (type) {
     default:
-        return state
-    }
-}
+      return state;
+  }
+};

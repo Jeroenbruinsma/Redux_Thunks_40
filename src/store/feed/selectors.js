@@ -1,5 +1,5 @@
 export function selectFeedPosts(reduxStore) {
-  console.log("7. inside the selector function");
+  // console.log("7. inside the selector function");
 
   return reduxStore.feed.posts;
 }

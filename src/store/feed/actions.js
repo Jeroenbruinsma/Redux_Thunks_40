@@ -1,9 +1,9 @@
 //what is an action creator? -> a function to get store/update data in our store.
 import axios from "axios";
 
-// returns an object where the store can work with
 const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
 
+// returns an object where the store can work with
 export function storeDataInStore(data) {
   console.log("4. inside my action creator");
   return { type: "add_posts", payload: data };
@@ -32,7 +32,7 @@ export async function fetchNext5Posts(dispatch, getState) {
 }
 
 export async function fetchInitialPosts(dispatch, getState) {
-  console.log("HOW MANY TIMES DOES THIS HAPPEN????");
+  // console.log("HOW MANY TIMES DOES THIS HAPPEN????");
 
   const response = await axios.get(`${API_URL}/posts?offset=${0}&limit=5`);
 
